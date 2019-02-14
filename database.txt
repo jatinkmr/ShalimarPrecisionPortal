@@ -1,0 +1,120 @@
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Database Queries for Oracle
+Username : shalimaresol
+Password : shalimaresol
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+1)User :
+create table UserReg(
+u_id varchar2(30) primary key,
+u_name char(30) not null,
+u_typ char(30) not null,
+u_pass varchar2(40) not null,
+s_ques varchar2(40) not null,
+s_ans varchar2(40) not null,
+u_con int not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+2)Enquiry :
+create table enquiry(
+c_id int primary key,
+c_type char(30) not null,
+c_ques varchar2(30) not null,
+c_ans varchar2(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+3)Employee :
+create table employee(
+e_id int primary key,
+e_email varchar2(30) not null,
+e_name char(30) not null,
+e_add varchar2(50) not null,
+e_city varchar2(40) not null,
+e_state varchar2(40) not null,
+e_gen char(10) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+4)Customer :
+create table customer(
+c_id int primary key,
+c_name char(30) not null,
+c_con int not null,
+c_add varchar2(30) not null,
+c_eml varchar2(30) not null,
+c_cty varchar2(30) not null,
+c_state varchar2(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+5)Payment :
+create table payment(
+c_id int primary key,
+c_name char(30) not null,
+c_con int not null,
+e_id int not null,
+e_name char(30) not null,
+e_con int not null,
+s_id int not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+6)Inventory :
+create table inventory(
+i_id int primary key,
+p_id int not null,
+i_price int not null,
+i_qty int not null,
+i_grd char(20) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+7)Sales :
+create table sales(
+s_id int primary key,
+p_id int not null,
+p_qty int not null,
+p_prc int not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+8)Supplier :
+create table supplier(
+s_id int primary key,
+s_name char(30) not null,
+s_con int not null,
+s_add varchar2(30) not null,
+s_eml varchar2(30) not null,
+s_cty char(30) not null,
+s_state char(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+9)Promotion :
+create table promotion(
+pr_id int primary key,
+pr_name char(30) not null,
+pr_prc int not null,
+pro_id int not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+10)Bank :
+create table bank(
+b_id int primary key,
+b_name char(30) not null,
+b_brnch char(30) not null,
+b_cty char(30) not null,
+b_add varchar2(30) not null,
+b_eml varchar2(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+11)Emp_Attnd :
+create table Emp_Attnd(
+at_id int primary key,
+e_id int not null,
+e_date varchar2(30) not null,
+e_attend char(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+12)Expense :
+create table expense(
+ex_id int primary key,
+ex_typ char(30) not null,
+ex_amt int not null,
+ex_date varchar2(20) not null,
+ex_des varchar2(30) not null
+)
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
