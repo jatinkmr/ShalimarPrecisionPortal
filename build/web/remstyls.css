@@ -1,0 +1,272 @@
+/*menu-styles*/
+*{
+    margin: 0px;
+    padding: 0px;	
+    box-sizing: border-box;       
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;    
+}
+
+ul li a:hover{
+    background-color: green;
+    color: black;
+}
+
+ul li ul li{
+    display: none;        
+}
+
+ul li:hover ul li{
+    display: block;
+    color: black;
+}
+
+.navbar ul li ul{
+    display: none;
+}
+
+.navbar ul li:hover > ul{
+    display: block;
+}
+
+.navbar ul li ul li{
+    position: relative;
+}
+
+.navbar ul li:hover{
+    background-color: green;
+    opacity: 0.9;
+}
+
+.navbar ul li ul li{
+    position: relative;
+}
+
+.navbar ul li ul li ul{
+    position: absolute;
+    left: 200px;
+    top: 0px;
+}
+
+.navbar{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;	
+    position: fixed;
+    top: 0px;
+}
+
+.navbar a{
+    text-align: center;
+    font-weight: bold;		
+    padding-top: 20px 28px;
+}
+
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li{
+    float: left;
+    width: 180px;
+    height: 40px;
+    background-color: black;
+    opacity: 0.9;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 2px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+ul li a:hover{
+    background-color: green;
+    color: black;
+}
+
+ul li ul li{
+    display: none;
+}
+
+ul li:hover ul li{
+    display: block;
+    color: black;
+}
+
+.navbar ul li ul{
+    display: none;
+}
+
+.navbar ul li:hover > ul{
+    display: block;
+}
+
+.navbar ul li ul li{
+    position: relative;
+}
+
+.navbar ul li:hover{
+    background-color: green;
+    opacity: 0.9;
+}
+
+.navbar ul li ul li{
+    position: relative;
+}
+
+.navbar ul li ul li ul{
+    position: absolute;
+    left: 200px;
+    top: 0px;    
+}
+
+body{    
+    background-size: cover;
+    font-family: Magneto;	    
+    margin: 0px;
+    padding: 0px;	 
+    box-sizing: border-box;
+}
+
+/*Heading*/
+.header{
+    width: 100%;
+    height: 100px;   
+    background-color: #12b69c;
+}
+
+.header h2{    
+    padding-top: 60px;
+    color: #12335b;
+    font-family: Matura MT Script Capitals;
+    font-size: 26px;
+}
+
+/*sub-heading*/
+.subhd h2{
+    color: blue;
+    font-family: Vivaldi;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/*Buttons*/
+.dtls input[type="submit"],
+.dtls input[type="reset"]{
+    background-color: #33ccff;
+    font-family: Constantia;
+    color: #002451;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;	
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;    
+}
+
+.dtls input[type="text"]{
+    border: none;
+    border-bottom: solid Blue 3px;
+    border-right: solid Blue 3px;
+    background-color: #00cc66;
+    border-radius: 5px;
+    position: relative;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #66030e;
+    width: 18%;    
+}
+
+.dtls input[type="submit"]:hover,
+.dtls input[type="reset"]:hover{
+    background: #efe4d0;
+    color: #262626;
+}
+
+/*Images*/
+#images{
+    display: inline-block;
+    float: left;    
+    padding-left: 20px;    
+}
+
+#imagesR{
+    display: inline-block;
+    float: right;
+    padding-right: 20px;
+}
+
+/*Form's'*/
+.dtls{
+    color: #b55834;    
+}
+
+.dtls h3{
+    color: #000251;    
+    font-family: Algerian;    
+}
+
+/*AboutUS*/
+.introd{
+    padding-left: 40px;
+    padding-right: 40px;    
+}
+
+.introd p{
+    color: #000099;
+    font-family: Magneto;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+/*footer*/
+.foot{
+    background-color: #7fd73c;
+    padding-bottom: 0px;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    height: 20px;
+}
+
+.foot h2{
+    font-family: Baskerville Old Face;
+    font-size: 15px;
+    color: #000066;
+    padding-bottom: 0px;
+}
+
+/*Home Slider*/
+.Slider fieldset {
+    border: 2px ridge red;
+    height: 300px;    
+    border-radius: 10px;
+    color: #660000;
+    width: 1000px;
+    background-color: slategray;
+}
+.Slider legend {    
+    border: 2px groove #000251;
+    width: 140px;
+    height: 25px;
+    background-color: lightcoral;
+    font-family: Constantia;
+    font-weight: bolder;
+    border-radius: 10px;
+    color: #990000;    
+}
