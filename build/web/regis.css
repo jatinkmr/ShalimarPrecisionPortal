@@ -1,0 +1,99 @@
+/*Registration Details*/
+*{
+    margin: 0px;
+    padding: 0px;	
+    box-sizing: border-box;                
+}
+.header1{
+    width: 100%;
+    height: 100px;   
+    background-color: #12b69c;   
+    padding-top: 0px;
+}
+
+.header1 h2{    
+    padding-top: 30px;
+    color: #12335b;
+    font-family: Matura MT Script Capitals;
+    font-size: 34px;
+}
+
+.subhd h2{
+    color: blue;
+    font-family: Vivaldi;
+    font-size: 40px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+#images{
+    display: inline-block;
+    float: left;    
+    padding-left: 20px;    
+}
+
+/*footer*/
+.foot{
+    background-color: #7fd73c;
+    padding-bottom: 0px;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    height: 20px;
+}
+
+.foot h2{
+    font-family: Baskerville Old Face;
+    font-size: 15px;
+    color: #000066;
+    padding-bottom: 0px;
+}
+
+/*forms*/
+.dtls input[type="button"],
+.dtls input[type="submit"],
+.dtls input[type="reset"]{
+    background-color: #33ccff;
+    font-family: Constantia;
+    color: #002451;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;	
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;    
+}
+
+.dtls select{
+    background-color: #78c84e;
+    font-family: cursive;
+    font-style: italic;
+    border: #000251 dashed 2px;
+    font-size: 15px;
+}
+
+.dtls input[type="text"]{
+    border: none;
+    border-bottom: solid Blue 2px;
+    background-color: #00cc66;
+    border-radius: 2px;
+    position: relative;
+    font-size: 15px;
+}
+
+.dtls input[type="password"]{
+    border: none;
+    border-bottom: solid Blue 2px;
+    background-color: #00cc66;
+    border-radius: 2px;
+    position: relative;
+    font-size: 15px;
+}
+
+.dtls input[type="button"]:hover,
+.dtls input[type="submit"]:hover,
+.dtls input[type="reset"]:hover{
+    background: #efe4d0;
+    color: #262626;
+}

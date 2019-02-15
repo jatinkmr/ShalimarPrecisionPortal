@@ -5,18 +5,12 @@
             <url>web/Customer.jsp</url>
             <bookmark id="1">
                 <name/>
-                <line>52</line>
+                <line>0</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/jatin%20kamboj/Documents/NetBeansProjects/Advanced_Java/Project/ShalimarPrecisionPortal/web/remstyls.css</file>
-            <file>file:/C:/Users/jatin%20kamboj/Documents/NetBeansProjects/Advanced_Java/Project/ShalimarPrecisionPortal/web/login.jsp</file>
-            <file>file:/C:/Users/jatin%20kamboj/Documents/NetBeansProjects/Advanced_Java/Project/ShalimarPrecisionPortal/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/jatin%20kamboj/Documents/NetBeansProjects/Advanced_Java/Project/ShalimarPrecisionPortal/web/Welcome.jsp</file>
-            <file>file:/C:/Users/jatin%20kamboj/Documents/NetBeansProjects/Advanced_Java/Project/ShalimarPrecisionPortal/src/java/loginOperation.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
