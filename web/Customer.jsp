@@ -43,13 +43,13 @@
         <div class="dtls">
             <center>               
                 <form action="cstmr" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer ID</font> <input type="text" name="cid" placeholder="Enter Customer ID"/><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Name</font> <input type="text" name="cn" placeholder="Enter Customer Name" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Contact</font> <input type="text" name="ccn" placeholder="Enter Customer Contact" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Address</font> <input type="text" name="cdd" placeholder="Enter Your Address Here"/><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Email</font> <input type="text" name="cml" placeholder="Enter Customer Email" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer City</font> <input type="text" name="cty" placeholder="Enter Customer City" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer State</font> <input type="text" name="ct" placeholder="Enter Customer State" /><br/><br/>										
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer ID</font> <input type="text" name="cid" placeholder="Enter Customer ID" value='<%=request.getAttribute("csid")%>' /><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Name</font> <input type="text" name="cn" placeholder="Enter Customer Name" value='<%=request.getAttribute("cusnm")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Contact</font> <input type="text" name="ccn" placeholder="Enter Customer Contact" value='<%=request.getAttribute("cuscon")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Address</font> <input type="text" name="cdd" placeholder="Enter Your Address Here" value='<%=request.getAttribute("cusadd")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Email</font> <input type="text" name="cml" placeholder="Enter Customer Email" value='<%=request.getAttribute("cuseml")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer City</font> <input type="text" name="cty" placeholder="Enter Customer City" value='<%=request.getAttribute("cuscty")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer State</font> <input type="text" name="ct" placeholder="Enter Customer State" value='<%=request.getAttribute("cusst")%>'/><br/><br/>			
                     <input type="submit" name="cstmrsb" value="Insert">
                     <input type="submit" name="cstmrsb" value="Update">
                     <input type="submit" name="cstmrsb" value="Delete">

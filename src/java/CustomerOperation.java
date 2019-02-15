@@ -1,47 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
+import java.io.*;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-/**
- *
- * @author jatin kamboj
- */
+import javax.servlet.http.*;
+import java.sql.*;
 @WebServlet(urlPatterns = {"/CustomerOperation"})
 public class CustomerOperation extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CustomerOperation</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CustomerOperation at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String id,nm,cont,add,eml,cty,st,action;
+            action = request.getParameter("cstmrsb");
+            System.out.println("Your Action is : "+action);
+            id = request.getParameter("cid");            
+            nm = request.getParameter("cn");
+            cont = request.getParameter("ccn");
+            add = request.getParameter("cdd");
+            eml = request.getParameter("cml");
+            cty = request.getParameter("cty");
+            st = request.getParameter("ct");
+            try{
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shalimaresol","shalimaresol");
+                Statement stmt=conn.createStatement();                     
+                if(action.equals("Insert")){
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cont))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(cty))&&(!"".equals(st))){	                
+                        int a = stmt.executeUpdate("insert into customer values ('"+id+"','"+nm+"','"+cont+"','"+add+"','"+eml+"','"+cty+"','"+st+"')");                    
+                        if(a>0){
+                            request.setAttribute("errmsg","Record Successfully Inserted!");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Inserted!");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request, response);
+                        }                    
+                    }else{
+                        request.setAttribute("errmsg","Some of the Field is Empty!!");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                        rsd.forward(request, response);
+                    }
+                }else{
+                
+                }
+            }catch(Exception ex){
+            
+            }
         }
     }
 
