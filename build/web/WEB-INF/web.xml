@@ -16,4 +16,12 @@
         <servlet-name>CustomerOperation</servlet-name>
         <url-pattern>/cstmr</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EmployeeOperation</servlet-name>
+        <servlet-class>EmployeeOperation</servlet-class>        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmployeeOperation</servlet-name>
+        <url-pattern>/empm</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -45,7 +45,7 @@ public class CustomerOperation extends HttpServlet {
                         int a = stmt.executeUpdate("update customer set c_name='"+nm+"',c_con='"+cont+"',c_add='"+add+"',c_eml='"+eml+"',c_cty='"+cty+"',c_state='"+st+"' where c_id='"+id+"' ");
                         if(a > 0){
                             request.setAttribute("errmsg","Record Updated Successfully !");
-                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
                             rsd.forward(request,response);
                         }else{
                             request.setAttribute("errmsg","Record Doesn't Updated !");
@@ -78,21 +78,21 @@ public class CustomerOperation extends HttpServlet {
                     if(!"".equals(id)){
                         ResultSet rs = stmt.executeQuery("select * from customer where c_id='"+id+"' ");
                         if(rs.next()){
-							System.out.println(rs.getString(1));
-							System.out.println(rs.getString(2));
-							System.out.println(rs.getString(3));
-							System.out.println(rs.getString(4));
-							System.out.println(rs.getString(5));
-							System.out.println(rs.getString(6));
-							System.out.println(rs.getString(7));
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            System.out.println(rs.getString(5));
+                            System.out.println(rs.getString(6));
+                            System.out.println(rs.getString(7));
                             request.setAttribute("errmsg","Record Found !");
                             request.setAttribute("csid",rs.getString(1));
-							request.setAttribute("cusnm",rs.getString(2));
-							request.setAttribute("cuscon",rs.getString(3));
-							request.setAttribute("cusadd",rs.getString(4));
-							request.setAttribute("cuseml",rs.getString(5));
-							request.setAttribute("cuscty",rs.getString(6));
-							request.setAttribute("cusst",rs.getString(7));
+                            request.setAttribute("cusnm",rs.getString(2));
+                            request.setAttribute("cuscon",rs.getString(3));
+                            request.setAttribute("cusadd",rs.getString(4));
+                            request.setAttribute("cuseml",rs.getString(5));
+                            request.setAttribute("cuscty",rs.getString(6));
+                            request.setAttribute("cusst",rs.getString(7));
                             RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
                             rsd.forward(request, response);
                         }else{
@@ -107,7 +107,7 @@ public class CustomerOperation extends HttpServlet {
                     }
                 }
             }catch(Exception ex){
-                ex.printStackTrace();
+                //ex.printStackTrace();
                 request.setAttribute("errmsg","An Error Occurred !");
                 RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
                 rsd.forward(request,response);
