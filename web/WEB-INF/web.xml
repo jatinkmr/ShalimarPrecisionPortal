@@ -8,5 +8,12 @@
         <servlet-name>loginOperation</servlet-name>
         <url-pattern>/Wel</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <servlet-name>CustomerOperation</servlet-name>
+        <servlet-class>CustomerOperation</servlet-class>
+    </servlet>        
+    <servlet-mapping>
+        <servlet-name>CustomerOperation</servlet-name>
+        <url-pattern>/cstmr</url-pattern>
+    </servlet-mapping>
 </web-app>

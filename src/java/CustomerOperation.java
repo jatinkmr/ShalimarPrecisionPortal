@@ -41,24 +41,57 @@ public class CustomerOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }
                 }else if(action.equals("Update")){
-					if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cont))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(cty))&&(!"".equals(st))){
-						int a = stmt.executeUpdate("update customer set ");
-						if(a > 0){
-							request.setAttribute("errmsg","Record Updated Successfully !");
-							RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
-							rsd.forward(request,response);
-						}else{
-							request.setAttribute("errmsg","Record Doesn't Updated !");
-							RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
-							rsd.forward(request,response);
-						}
-					}else{
-						// Added a slight change
-						
-						request.setAttribute("errmsg","Some of the Field is Empty !");
-						RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
-						rsd.forward(request,response);
-					}
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cont))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(cty))&&(!"".equals(st))){
+                        int a = stmt.executeUpdate("update customer set ");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Updated Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
+                            rsd.forward(request,response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
+                            rsd.forward(request,response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Some of the Field is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                        rsd.forward(request,response);
+                    }
+                }else if(action.equals("Delete")){
+                    if(!"".equals(id)){
+                        int a = stmt.executeUpdate("delete from customer where c_id='"+id+"' ");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Deleted Successfully !");				
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request,response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Deleted !");				
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request,response);							
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Customer ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                        rsd.forward(request, response);
+                    }
+                }else if(action.equals("Search")){
+                    if(!"".equals(id)){
+                        ResultSet rs = stmt.executeQuery("select * from customer where c_id='"+id+"' ");
+                        if(rs.next()){
+                            request.setAttribute("errmsg","Record Found !");
+                            
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Not Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                            rsd.forward(request,response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Customer ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+                        rsd.forward(request, response);                    
+                    }
                 }
             }catch(Exception ex){
                 ex.printStackTrace();
