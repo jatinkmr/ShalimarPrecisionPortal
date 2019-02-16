@@ -40,8 +40,25 @@ public class CustomerOperation extends HttpServlet {
                         RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
                         rsd.forward(request, response);
                     }
-                }else{
-                
+                }else if(action.equals("Update")){
+					if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cont))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(cty))&&(!"".equals(st))){
+						int a = stmt.executeUpdate("update customer set ");
+						if(a > 0){
+							request.setAttribute("errmsg","Record Updated Successfully !");
+							RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
+							rsd.forward(request,response);
+						}else{
+							request.setAttribute("errmsg","Record Doesn't Updated !");
+							RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");						
+							rsd.forward(request,response);
+						}
+					}else{
+						// Added a slight change
+						
+						request.setAttribute("errmsg","Some of the Field is Empty !");
+						RequestDispatcher rsd = request.getRequestDispatcher("/Customer.jsp");
+						rsd.forward(request,response);
+					}
                 }
             }catch(Exception ex){
                 ex.printStackTrace();
