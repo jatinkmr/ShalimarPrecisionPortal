@@ -42,9 +42,39 @@ public class EmployeeOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }
                 }else if(action.equals("Update")) {
-                
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(con))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){
+                        int a = stmt.executeUpdate("update employee set e_email='"+eml+"' ,e_enam='"+nm+"' ,e_add='"+add+"' ,e_city='"+ty+"' ,e_state='"+st+"' ,e_gen='"+gen+"' ,e_contact='"+con+"' where e_id='"+id+"'");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Successfully Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                        
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                                                    
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Some of the Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                        rsd.forward(request, response);
+                    }                
                 }else if(action.equals("Delete")) {
-                
+                    if(!"".equals(id)){
+                        int a = stmt.executeUpdate("delete from employee where e_id='"+id+"' ");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Deleted Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                        
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Employee ID!");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                        rsd.forward(request, response);                                                
+                    }                
                 }else if(action.equals("Search")) {
                 
                 }
