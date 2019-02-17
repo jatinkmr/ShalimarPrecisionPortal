@@ -40,15 +40,15 @@
         </div>
         <div class="dtls">
             <center>               
-                <form action="empm" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee ID</font> <input type="text" name="eid" placeholder="Enter Employee ID"/><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Name</font> <input type="text" name="enm" placeholder="Enter Employee Name" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Contact</font> <input type="text" name="ecn" placeholder="Enter Customer Contact" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Address</font> <input type="text" name="edd" placeholder="Enter Your Address Here" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Email</font> <input type="text" name="eeml" placeholder="Enter Customer Email" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee City</font> <input type="text" name="ety" placeholder="Enter Customer City" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee State</font> <input type="text" name="est" placeholder="Enter Customer State" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Gender</font> <input type="text" name="gend" placeholder="Enter Gender(Mal/Fem)" /><br/><br/>
+<form action="empm" name="myfrm">
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee ID</font> <input type="text" name="eid" placeholder="Enter Employee ID" value='<%=request.getAttribute("empid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Name</font> <input type="text" name="enm" placeholder="Enter Employee Name" value='<%=request.getAttribute("empnm")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Contact</font> <input type="text" name="ecn" placeholder="Enter Customer Contact" value='<%=request.getAttribute("empcon")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Address</font> <input type="text" name="edd" placeholder="Enter Your Address Here" value='<%=request.getAttribute("empadd")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Email</font> <input type="text" name="eeml" placeholder="Enter Customer Email" value='<%=request.getAttribute("empeml")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee City</font> <input type="text" name="ety" placeholder="Enter Customer City" value='<%=request.getAttribute("empcty")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee State</font> <input type="text" name="est" placeholder="Enter Customer State" value='<%=request.getAttribute("empst")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Gender</font> <input type="text" name="gend" placeholder="Enter Gender(Mal/Fem)" value='<%=request.getAttribute("empgend")%>'  /><br/><br/>
                     <input type="submit" name="empsb" value="Insert">
                     <input type="submit" name="empsb" value="Update">
                     <input type="submit" name="empsb" value="Delete">

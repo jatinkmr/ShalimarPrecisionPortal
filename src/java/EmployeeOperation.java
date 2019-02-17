@@ -76,7 +76,38 @@ public class EmployeeOperation extends HttpServlet {
                         rsd.forward(request, response);                                                
                     }                
                 }else if(action.equals("Search")) {
-                
+                    if(!"".equals(id)){
+                        ResultSet rs = stmt.executeQuery("select * from employee where e_id='"+id+"' ");
+                        if(rs.next()){                  
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            System.out.println(rs.getString(5));
+                            System.out.println(rs.getString(6));
+                            System.out.println(rs.getString(7));                            
+                            System.out.println(rs.getString(8));                            
+                            request.setAttribute("empid",rs.getString(1));
+                            request.setAttribute("empnm",rs.getString(2));
+                            request.setAttribute("empcon",rs.getString(8));
+                            request.setAttribute("empadd",rs.getString(4));
+                            request.setAttribute("empeml",rs.getString(3));
+                            request.setAttribute("empcty",rs.getString(5));
+                            request.setAttribute("empst",rs.getString(6));
+                            request.setAttribute("empgend",rs.getString(7));
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request,response);                                  
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request,response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Employee ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                        rsd.forward(request, response);
+                    }                
                 }
             }catch(Exception ex) {
                 request.setAttribute("errmsg","An Error Occurred While Making Connection !");
