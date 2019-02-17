@@ -40,7 +40,7 @@
         </div>
         <div class="dtls">
             <center>               
-<form action="empm" name="myfrm">
+            <form action="empm" name="myfrm">
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee ID</font> <input type="text" name="eid" placeholder="Enter Employee ID" value='<%=request.getAttribute("empid")%>'/><br/><br/>
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Name</font> <input type="text" name="enm" placeholder="Enter Employee Name" value='<%=request.getAttribute("empnm")%>'/><br/><br/>
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Contact</font> <input type="text" name="ecn" placeholder="Enter Customer Contact" value='<%=request.getAttribute("empcon")%>'/><br/><br/>
