@@ -25,7 +25,22 @@ public class EmployeeOperation extends HttpServlet {
                 Connection con = DriverManager.getConnection("jdbc:odbc:thin:@localhost:1521:xe","shalimaresol","shalimaresol");
                 Statement stmt = con.createStatement();
                 if(action.equals("Insert")) {
-                    
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cn))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){
+                        int a = stmt.executeUpdate("insert into employee values('"+id+"','"+nm+"','"+eml+"','"+add+"','"+ty+"','"+st+"','"+gen+"','"+con+"')");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Inserted Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                            
+                        }else{
+                            request.setAttribute("errmsg", "Record Doesn't Inserted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);
+                        }                        
+                    }else{
+                        request.setAttribute("errmsg","Some of The Fields is Empty.Please Fill Them Properly !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                        rsd.forward(request, response);
+                    }
                 }else if(action.equals("Update")) {
                 
                 }else if(action.equals("Delete")) {
