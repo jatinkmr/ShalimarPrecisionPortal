@@ -32,4 +32,12 @@
         <servlet-name>EnquiryOperation</servlet-name>
         <url-pattern>/enqry</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductOperation</servlet-name>
+        <servlet-class>ProductOperation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductOperation</servlet-name>    
+        <url-pattern>/invntry</url-pattern>
+    </servlet-mapping>
 </web-app>
