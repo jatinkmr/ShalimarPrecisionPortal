@@ -41,13 +41,13 @@
         <div class="dtls">
             <center>               
                 <form action="pymnt" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer ID</font> <input type="text" name="cid" placeholder="Enter Customer ID" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Name</font> <input type="text" name="cnm" placeholder="Enter Customer Name" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Contact No</font> <input type="text" name="con" placeholder="Enter Conatct No" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee ID</font> <input type="text" name="eid" placeholder="Enter Employee ID" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Name</font> <input type="text" name="enm" placeholder="Enter Employee Name" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Contact No</font> <input type="text" name="econ" placeholder="Enter Contact No" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Supplier ID</font> <input type="text" name="sid" placeholder="Enter Supplier ID" /><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer ID</font> <input type="text" name="cid" placeholder="Enter Customer ID" value='<%=request.getAttribute("cusid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Customer Name</font> <input type="text" name="cnm" placeholder="Enter Customer Name" value='<%=request.getAttribute("cusnm")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Contact No</font> <input type="text" name="con" placeholder="Enter Conatct No" value='<%=request.getAttribute("cuscon")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee ID</font> <input type="text" name="eid" placeholder="Enter Employee ID" value='<%=request.getAttribute("empid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Employee Name</font> <input type="text" name="enm" placeholder="Enter Employee Name" value='<%=request.getAttribute("empnm")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Contact No</font> <input type="text" name="econ" placeholder="Enter Contact No" value='<%=request.getAttribute("empcon")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Supplier ID</font> <input type="text" name="sid" placeholder="Enter Supplier ID" value='<%=request.getAttribute("supid")%>'/><br/><br/>
                     <input type="submit" name="pysb" value="Insert">
                     <input type="submit" name="pysb" value="Update">
                     <input type="submit" name="pysb" value="Delete">

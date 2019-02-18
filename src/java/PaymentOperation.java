@@ -75,7 +75,36 @@ public class PaymentOperation extends HttpServlet {
                         rsd.forward(request,response);                    
                     }                
                 }else if(action.equals("Search")){
-                
+                    if(!"".equals(cid)){
+                        ResultSet rs = stmt.executeQuery("select * from payment where c_id='"+cid+"'");
+                        if(rs.next()){                           
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            System.out.println(rs.getString(5));
+                            System.out.println(rs.getString(6));
+                            System.out.println(rs.getString(7));
+                            request.setAttribute("cusid", rs.getString(1));
+                            request.setAttribute("cusnm",rs.getString(2));
+                            request.setAttribute("cuscon",rs.getString(3));
+                            request.setAttribute("empid",rs.getString(4));
+                            request.setAttribute("empnm",rs.getString(5));
+                            request.setAttribute("empcon",rs.getString(6));
+                            request.setAttribute("supid",rs.getString(7));
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request,response);                            
+                        }else{
+                            request.setAttribute("errmsg","Record Not Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request,response);                            
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Payment ID!");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                        rsd.forward(request,response);                    
+                    }                                
                 }
             }catch(Exception ex){
                 request.setAttribute("errmsg","An Error Occurred While Establishing The Connection !");
