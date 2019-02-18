@@ -41,11 +41,11 @@
         <div class="dtls">
             <center>               
                 <form action="invntry" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Inventory ID</font> <input type="text" name="iid" placeholder="Enter Inventory ID" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product ID</font> <input type="text" name="pid" placeholder="Enter Product ID" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Unit Price</font> <input type="text" name="upr" placeholder="Enter Unit Price" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Quantity</font> <input type="text" name="prqn" placeholder="Enter Product Quantity" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Grade</font> <input type="text" name="igr" placeholder="Enter Product Grade" /><br/><br/>                    
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Inventory ID</font> <input type="text" name="iid" placeholder="Enter Inventory ID" value='<%=request.getAttribute("invid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product ID</font> <input type="text" name="pid" placeholder="Enter Product ID" value='<%=request.getAttribute("prid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Unit Price</font> <input type="text" name="upr" placeholder="Enter Unit Price" value='<%=request.getAttribute("unprc")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Quantity</font> <input type="text" name="prqn" placeholder="Enter Product Quantity" value='<%=request.getAttribute("prqty")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Grade</font> <input type="text" name="igr" placeholder="Enter Product Grade" value='<%=request.getAttribute("prgrd")%>'/><br/><br/>     
                     <input type="submit" name="invsb" value="Insert">
                     <input type="submit" name="invsb" value="Update">
                     <input type="submit" name="invsb" value="Delete">

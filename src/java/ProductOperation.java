@@ -73,7 +73,32 @@ public class ProductOperation extends HttpServlet {
                         rsd.forward(request,response);
                     }                
                 }else if(action.equals("Search")){
-                
+                    if(!"".equals(id)){
+                        ResultSet rs = stmt.executeQuery("select * from inventory where i_id='"+id+"'");
+                        if(rs.next()){                           
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            System.out.println(rs.getString(5));                            
+                            request.setAttribute("invid",rs.getString(1));
+                            request.setAttribute("prid",rs.getString(2));
+                            request.setAttribute("unprc",rs.getString(3));
+                            request.setAttribute("prqty",rs.getString(4));
+                            request.setAttribute("prgrd",rs.getString(5));
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                            rsd.forward(request,response);                            
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                            rsd.forward(request,response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Inventory ID");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                        rsd.forward(request,response);
+                    }                                
                 }
             }catch(Exception ex){
                 ex.printStackTrace();
