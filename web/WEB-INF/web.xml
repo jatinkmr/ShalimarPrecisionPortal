@@ -24,4 +24,12 @@
         <servlet-name>EmployeeOperation</servlet-name>
         <url-pattern>/empm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EnquiryOperation</servlet-name>
+        <servlet-class>EnquiryOperation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EnquiryOperation</servlet-name>
+        <url-pattern>/enqry</url-pattern>
+    </servlet-mapping>
 </web-app>

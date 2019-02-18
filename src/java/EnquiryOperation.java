@@ -73,7 +73,30 @@ public class EnquiryOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }                
                 }else if(action.equals("Search")){
-                
+                    if(!"".equals(id)){
+                        ResultSet rs = stmt.executeQuery("select * from enquiry where c_id='"+id+"'");
+                        if(rs.next()){                           
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            request.setAttribute("enqid",rs.getString(1));
+                            request.setAttribute("enqtyp",rs.getString(2));
+                            request.setAttribute("enques",rs.getString(3));
+                            request.setAttribute("enans",rs.getString(4));                            
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Enquiry.jsp");
+                            rsd.forward(request, response);                            
+                        }else{
+                            request.setAttribute("errmsg","Record Not Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Enquiry.jsp");
+                            rsd.forward(request, response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Enquiry ID First !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Enquiry.jsp");
+                        rsd.forward(request, response);                
+                    }                
                 }
             }catch(Exception ex){
                 request.setAttribute("errmsg","An Error Occurred While Establishing The Connection!!");
@@ -82,42 +105,16 @@ public class EnquiryOperation extends HttpServlet {
             }
         }
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-	 // Another comment
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -42,10 +42,10 @@
         <div class="dtls">
             <center>               
                 <form action="enqry" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry ID</font> <input type="text" name="eid" placeholder="Enter Enquiry ID" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Type</font> <input type="text" name="etyp" placeholder="Enter Enquiry Type" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Question</font> <input type="text" name="eques" placeholder="Enter Enquiry Question" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Answer</font> <input type="text" name="eans" placeholder="Enter Enquiry Answer" /><br/><br/>                    
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry ID</font> <input type="text" name="eid" placeholder="Enter Enquiry ID" value='<%=request.getAttribute("enqid")%>' /><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Type</font> <input type="text" name="etyp" placeholder="Enter Enquiry Type" value='<%=request.getAttribute("enqtyp")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Question</font> <input type="text" name="eques" placeholder="Enter Enquiry Question" value='<%=request.getAttribute("enques")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Enquiry Answer</font> <input type="text" name="eans" placeholder="Enter Enquiry Answer" value='<%=request.getAttribute("enans")%>'/><br/><br/> 
                     <input type="submit" name="enqrsb" value="Insert">
                     <input type="submit" name="enqrsb" value="Update">
                     <input type="submit" name="enqrsb" value="Delete">
