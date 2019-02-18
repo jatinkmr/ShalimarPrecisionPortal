@@ -40,4 +40,12 @@
         <servlet-name>ProductOperation</servlet-name>    
         <url-pattern>/invntry</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PaymentOperation</servlet-name>
+        <servlet-class>PaymentOperation</servlet-class>        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentOperation</servlet-name>
+        <url-pattern>/pymnt</url-pattern>
+    </servlet-mapping>
 </web-app>

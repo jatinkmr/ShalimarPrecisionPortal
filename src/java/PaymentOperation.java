@@ -1,47 +1,87 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
+import java.io.*;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-/**
- *
- * @author jatin kamboj
- */
+import javax.servlet.http.*;
+import java.sql.*;
 @WebServlet(urlPatterns = {"/PaymentOperation"})
 public class PaymentOperation extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PaymentOperation</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PaymentOperation at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String action,cid,cnm,con,id,enm,sid,econ;
+            action = request.getParameter("pysb");
+            cid = request.getParameter("cid");
+            cnm = request.getParameter("cnm");
+            con = request.getParameter("con");
+            id = request.getParameter("eid");
+            enm = request.getParameter("enm");
+            econ = request.getParameter("econ");
+            sid = request.getParameter("sid");
+            
+            try{
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shalimaresol","shalimaresol");
+                Statement stmt=conn.createStatement();           
+                if(action.equals("Insert")){
+                    if((!"".equals(cid))&&(!"".equals(enm))&&(!"".equals(con))&&(!"".equals(id))&&(!"".equals(enm))&&(!"".equals(econ))&&(!"".equals(sid))){
+                        int a = stmt.executeUpdate("insert into payment values ('"+cid+"','"+cnm+"','"+con+"','"+id+"','"+enm+"','"+econ+"','"+sid+"')");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Inserted Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request,response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Inserted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request,response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Some of the Given Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                        rsd.forward(request,response);
+                    }                    
+                }else if(action.equals("Update")){
+                    if((!"".equals(cid))&&(!"".equals(enm))&&(!"".equals(con))&&(!"".equals(id))&&(!"".equals(enm))&&(!"".equals(econ))&&(!"".equals(sid))){
+                        int a = stmt.executeUpdate("update payment set c_name='"+cnm+"' ,c_con='"+con+"' ,e_id='"+id+"' ,e_name='"+enm+"' ,e_con='"+econ+"' ,s_id='"+sid+"'  where c_id='"+cid+"'");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Updated Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Updated Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request, response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Some of the Given Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                        rsd.forward(request,response);                    
+                    }                    
+                }else if(action.equals("Delete")){
+                    if(!"".equals(cid)){
+                        int a = stmt.executeUpdate("delete from payment where c_id='"+cid+"'");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Successfully Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Payment ID!");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                        rsd.forward(request,response);                    
+                    }                
+                }else if(action.equals("Search")){
+                
+                }
+            }catch(Exception ex){
+                request.setAttribute("errmsg","An Error Occurred While Establishing The Connection !");
+                RequestDispatcher rsd = request.getRequestDispatcher("/Payment.jsp");
+                rsd.forward(request, response);
+            }
         }
     }
 
