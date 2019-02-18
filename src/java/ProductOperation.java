@@ -40,9 +40,38 @@ public class ProductOperation extends HttpServlet {
                         rsd.forward(request,response);
                     }                    
                 }else if(action.equals("Update")){
-                
+                    if((!"".equals(id))&&(!"".equals(pid))&&(!"".equals(prc))&&(!"".equals(grd))){
+                        int a = stmt.executeUpdate("update inventory set p_id='"+pid+"' ,i_price='"+prc+"',i_qty='"+qn+"' ,i_grd='"+grd+"' where i_id='"+id+"'");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Updated Successfully !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                            rsd.forward(request, response);
+                        }                    
+                    }else{
+                        request.setAttribute("errmsg","Some of the Given Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                        rsd.forward(request,response);
+                    }                                    
                 }else if(action.equals("Delete")){
-                
+                    if(!"".equals(id)){
+                        int a = stmt.executeUpdate("delete from inventory where i_id='"+id+"'");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Successfully Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                            rsd.forward(request,response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Inventory ID");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Inventory.jsp");
+                        rsd.forward(request,response);
+                    }                
                 }else if(action.equals("Search")){
                 
                 }
