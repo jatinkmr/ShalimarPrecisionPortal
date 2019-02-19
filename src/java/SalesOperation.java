@@ -39,7 +39,22 @@ public class SalesOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }                
                 }else if(action.equals("Update")){
-                
+                    if((!"".equals(slid))&&(!"".equals(prid))&&(!"".equals(qty))&&(!"".equals(prc))){
+                        int a = stmt.executeUpdate("update sales set p_id='"+prid+"' ,p_qty='"+qty+"' ,p_prc='"+prc+"' where s_id='"+slid+"' ");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Successfully Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Some of the Given Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                        rsd.forward(request, response);
+                    }                                
                 }else if(action.equals("Delete")){
                 
                 }else if(action.equals("Search")){
