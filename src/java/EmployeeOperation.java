@@ -8,24 +8,24 @@ public class EmployeeOperation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String action,id,nm,cn,add,eml,ty,st,gen;
+        try (PrintWriter out = response.getWriter()) {            
+            String action,id,nm,con,add,eml,ty,st,gen;
             action = request.getParameter("empsb");
             id = request.getParameter("eid");
             nm = request.getParameter("enm");
-            cn = request.getParameter("ecn");
+            con = request.getParameter("ecn");
             add = request.getParameter("edd");
             eml = request.getParameter("eeml");
             ty = request.getParameter("ety");
             st = request.getParameter("est");
             gen = request.getParameter("gend");
             
-            try {
-                Class.forName("oracle.jdbc.odbc.OracleDriver");
-                Connection con = DriverManager.getConnection("jdbc:odbc:thin:@localhost:1521:xe","shalimaresol","shalimaresol");
-                Statement stmt = con.createStatement();
-                if(action.equals("Insert")) {
-                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(cn))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){
+            try{
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","shalimaresol","shalimaresol");
+                Statement stmt=conn.createStatement();                         
+                if(action.equals("Insert")){
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(con))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){
                         int a = stmt.executeUpdate("insert into employee values('"+id+"','"+nm+"','"+eml+"','"+add+"','"+ty+"','"+st+"','"+gen+"','"+con+"')");
                         if(a > 0){
                             request.setAttribute("errmsg","Record Inserted Successfully !");
@@ -35,29 +35,29 @@ public class EmployeeOperation extends HttpServlet {
                             request.setAttribute("errmsg", "Record Doesn't Inserted !");
                             RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
                             rsd.forward(request, response);
-                        }                        
-                    }else{
-                        request.setAttribute("errmsg","Some of The Fields is Empty.Please Fill Them Properly !");
-                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
-                        rsd.forward(request, response);
-                    }
-                }else if(action.equals("Update")) {
-                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(con))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){
-                        int a = stmt.executeUpdate("update employee set e_email='"+eml+"' ,e_enam='"+nm+"' ,e_add='"+add+"' ,e_city='"+ty+"' ,e_state='"+st+"' ,e_gen='"+gen+"' ,e_contact='"+con+"' where e_id='"+id+"'");
-                        if(a > 0){
-                            request.setAttribute("errmsg","Record Successfully Updated !");
-                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
-                            rsd.forward(request, response);                        
-                        }else{
-                            request.setAttribute("errmsg","Record Doesn't Updated !");
-                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
-                            rsd.forward(request, response);                                                    
                         }
                     }else{
                         request.setAttribute("errmsg","Some of the Fields is Empty !");
                         RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
                         rsd.forward(request, response);
-                    }                
+                    }
+                } else if(action.equals("Update")) {
+                    if((!"".equals(id))&&(!"".equals(nm))&&(!"".equals(con))&&(!"".equals(add))&&(!"".equals(eml))&&(!"".equals(ty))&&(!"".equals(st))&&(!"".equals(gen))){                        
+                        int a = stmt.executeUpdate("update employee set e_name='"+nm+"', e_email='"+eml+"', e_add='"+add+"', e_city='"+ty+"', e_state='"+st+"', e_gen='"+gen+"', e_contact='"+con+"' where e_id='"+id+"' ");
+                        if(a > 0) {
+                            request.setAttribute("errmsg","Record Successfully Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);
+                        }else {
+                            request.setAttribute("errmsg","Record Doesn't Updated !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else {
+                        request.setAttribute("errmsg","Some of The Fields is Empty !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
+                        rsd.forward(request, response);
+                    }
                 }else if(action.equals("Delete")) {
                     if(!"".equals(id)){
                         int a = stmt.executeUpdate("delete from employee where e_id='"+id+"' ");
@@ -74,8 +74,8 @@ public class EmployeeOperation extends HttpServlet {
                         request.setAttribute("errmsg","Please Fill The Employee ID!");
                         RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
                         rsd.forward(request, response);                                                
-                    }                
-                }else if(action.equals("Search")) {
+                    }
+                }else if(action.equals("Search")){
                     if(!"".equals(id)){
                         ResultSet rs = stmt.executeQuery("select * from employee where e_id='"+id+"' ");
                         if(rs.next()){                  
@@ -107,14 +107,20 @@ public class EmployeeOperation extends HttpServlet {
                         request.setAttribute("errmsg","Please Fill The Employee ID !");
                         RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
                         rsd.forward(request, response);
-                    }                
+                    }
                 }
-            }catch(Exception ex) {
-                request.setAttribute("errmsg","An Error Occurred While Making Connection !");
+            }catch(Exception ex){
+                System.out.println(ex);
+                request.setAttribute("errmsg", "An Error Occurred");
                 RequestDispatcher rsd = request.getRequestDispatcher("/Employee.jsp");
-                rsd.forward(request,response);
+                rsd.forward(request, response);                
             }
         }
+    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

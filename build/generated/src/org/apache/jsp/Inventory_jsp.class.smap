@@ -1,0 +1,14 @@
+SMAP
+Inventory_jsp.java
+JSP
+*S JSP
+*F
++ 0 Inventory.jsp
+Inventory.jsp
+*L
+1,43:44
+44,5:87,3
+49,5:102
+54:107,3
+55,9:110
+*E
