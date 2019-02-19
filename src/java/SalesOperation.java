@@ -56,7 +56,22 @@ public class SalesOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }                                
                 }else if(action.equals("Delete")){
-                
+                    if(!"".equals(slid)){
+                        int a = stmt.executeUpdate("delete from sales where s_id='"+slid+"' ");
+                        if(a > 0){
+                            request.setAttribute("errmsg","Record Successfully Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);
+                        }else{
+                            request.setAttribute("errmsg","Record Doesn't Deleted !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Sales ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                        rsd.forward(request, response);
+                    }                
                 }else if(action.equals("Search")){
                 
                 }
