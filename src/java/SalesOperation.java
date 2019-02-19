@@ -73,10 +73,36 @@ public class SalesOperation extends HttpServlet {
                         rsd.forward(request, response);
                     }                
                 }else if(action.equals("Search")){
-                
+                    if(!"".equals(slid)){
+                        ResultSet rs = stmt.executeQuery("Select * from sales where s_id='"+slid+"'");
+                        if(rs.next()){
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            request.setAttribute("slid",rs.getString(1));
+                            request.setAttribute("prid",rs.getString(2));
+                            request.setAttribute("prqty",rs.getString(3));
+                            request.setAttribute("prprc",rs.getString(4));
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);                            
+                        }else{
+                            request.setAttribute("errmsg","Record Not Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                            rsd.forward(request, response);                        
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Please Fill The Sales ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                        rsd.forward(request, response);
+                    }                                
                 }
             }catch(Exception ex){
-            
+                System.out.println(ex);
+                request.setAttribute("errmsg","An Error Has Been Occurred While Establishing The Connection !");
+                RequestDispatcher rsd = request.getRequestDispatcher("/Sales.jsp");
+                rsd.forward(request, response);            
             }
         }
     }
