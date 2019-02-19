@@ -41,10 +41,10 @@
         <div class="dtls">
             <center>               
                 <form action="prmtn" name="myfrm">
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Promotion ID</font> <input type="text" name="pid" placeholder="Enter Promotion ID"/><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Promoter Name</font> <input type="text" name="pnm" placeholder="Enter Promoter Name" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Price</font> <input type="text" name="pprc" placeholder="Enter Product Price" /><br/><br/>
-                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product ID</font> <input type="text" name="prid" placeholder="Enter Product ID" /><br/><br/>
+                   <font size="4px" face="Lucida Calligraphy" color="#894d10">Promotion ID</font> <input type="text" name="pid" placeholder="Enter Promotion ID" value='<%=request.getAttribute("prmid")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Promoter Name</font> <input type="text" name="pnm" placeholder="Enter Promoter Name" value='<%=request.getAttribute("prmnm")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Price</font> <input type="text" name="pprc" placeholder="Enter Product Price" value='<%=request.getAttribute("prprc")%>'/><br/><br/>
+                    <font size="4px" face="Lucida Calligraphy" color="#894d10">Product ID</font> <input type="text" name="prid" placeholder="Enter Product ID" value='<%=request.getAttribute("prid")%>'/><br/><br/>
                     <input type="submit" name="prmsb" value="Insert">
                     <input type="submit" name="prmsb" value="Update">
                     <input type="submit" name="prmsb" value="Delete">

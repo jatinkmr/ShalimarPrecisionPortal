@@ -73,9 +73,31 @@ public class PromotionOperation extends HttpServlet {
                         rsd.forward(request, response);                    
                     }                
                 }else if(action.equals("Search")){
-                
-                }
-                
+                    if(!"".equals(prmid)){
+                        ResultSet rs = stmt.executeQuery("select * from promotion where pr_id='"+prmid+"' ");
+                        if(rs.next()){
+                            System.out.println(rs.getString(1));
+                            System.out.println(rs.getString(2));
+                            System.out.println(rs.getString(3));
+                            System.out.println(rs.getString(4));
+                            request.setAttribute("prmid",rs.getString(1));
+                            request.setAttribute("prmnm",rs.getString(2));
+                            request.setAttribute("prprc",rs.getString(3));
+                            request.setAttribute("prid",rs.getString(4));
+                            request.setAttribute("errmsg","Record Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Promotion.jsp");
+                            rsd.forward(request,response);                            
+                        }else{
+                            request.setAttribute("errmsg","Record Not Found !");
+                            RequestDispatcher rsd = request.getRequestDispatcher("/Promotion.jsp");
+                            rsd.forward(request,response);
+                        }
+                    }else{
+                        request.setAttribute("errmsg","Plesae Fill The Promotion ID !");
+                        RequestDispatcher rsd = request.getRequestDispatcher("/Promotion.jsp");
+                        rsd.forward(request, response);                    
+                    }                
+                }                
             }catch(Exception ex){
                 request.setAttribute("errmsg","An Error Occurred While Establishing The Connection !");
                 RequestDispatcher rsd = request.getRequestDispatcher("/Promotion.jsp");
