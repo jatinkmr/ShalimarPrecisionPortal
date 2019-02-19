@@ -56,4 +56,12 @@
         <servlet-name>PromotionOperation</servlet-name>
         <url-pattern>/prmtn</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SalesOperation</servlet-name>
+        <servlet-class>SalesOperation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SalesOperation</servlet-name>
+        <url-pattern>/saless</url-pattern>
+    </servlet-mapping>
 </web-app>

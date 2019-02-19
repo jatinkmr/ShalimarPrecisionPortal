@@ -40,7 +40,7 @@
         </div>
         <div class="dtls">
             <center>               
-                <form action="sale" name="myfrm">
+                <form action="saless" name="myfrm">
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Sale ID</font> <input type="text" name="sid" placeholder="Enter Sales ID"/><br/><br/>
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Product ID</font> <input type="text" name="pid" placeholder="Enter Product ID" /><br/><br/>
                     <font size="4px" face="Lucida Calligraphy" color="#894d10">Product Quantity</font> <input type="text" name="pqty" placeholder="Enter Product Quantity" /><br/><br/>
