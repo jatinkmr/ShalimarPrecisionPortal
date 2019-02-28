@@ -6,7 +6,7 @@
         <title>Promotion Management Portal</title>
         <link rel="stylesheet" type="text/css" href="remstyls.css">                
     </head>
-    <body bgcolor="lightsalmon">
+    <body bgcolor="lightyellow">
         <div class="navbar">
             <ul>
                 <li><a href="Welcome.jsp">Home</a></li>
